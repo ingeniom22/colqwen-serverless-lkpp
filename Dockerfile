@@ -46,7 +46,7 @@ ENV MODEL_NAME="vidore/colqwen2-v1.0" \
 ENV PYTHONPATH="/:/vllm-workspace"
 
 # Handle optional HF_TOKEN and download model
-RUN python3 src/download_model.py "$MODEL_NAME"
+RUN uv run src/download_model.py "$MODEL_NAME"
 
 # Start the application
-CMD ["python3", "-u", "src/main.py"]
+CMD ["uv", "run", "src/main.py"]
