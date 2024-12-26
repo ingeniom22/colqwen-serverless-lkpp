@@ -41,4 +41,4 @@ RUN --mount=type=secret,id=HF_TOKEN,required=false \
     python3 /src/download_model.py "$MODEL_NAME" "$HF_TOKEN"
 
 # Start the application
-CMD ["python3.11", "-u", "src/main.py"]
+CMD ["python3", "-u", "src/main.py"]
