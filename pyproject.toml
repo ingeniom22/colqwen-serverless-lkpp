@@ -1,0 +1,10 @@
+[project]
+name = "colqwen-serverless-lkpp"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "byaldi>=0.0.7",
+    "runpod>=1.7.7",
+]
