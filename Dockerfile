@@ -3,7 +3,10 @@ FROM nvidia/cuda:12.1.0-base-ubuntu22.04
 
 # Install dependencies
 RUN apt-get update && \
-    apt-get install -y poppler-utils && \
+    apt-get install -y \
+        poppler-utils \
+        python3 \
+        python3-pip && \
     rm -rf /var/lib/apt/lists/*
 
 
