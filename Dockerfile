@@ -24,9 +24,7 @@ WORKDIR /app
 # Install Python dependencies
 RUN uv sync --frozen --no-cache
 
-RUN python3 -c "\
-from byaldi import RAGMultiModalModel; \
-RAGMultiModalModel.from_index('../byaldi/lkpp-multimodal')"
+RUN uv run src/setup.py
 
 # Start the application
 CMD ["uv", "run", "src/main.py"]
