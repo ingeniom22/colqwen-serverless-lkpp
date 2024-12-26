@@ -1,5 +1,6 @@
 FROM nvidia/cuda:12.1.0-base-ubuntu22.04 
 
+
 # Install dependencies
 RUN apt-get update && \
     apt-get install -y poppler-utils && \
@@ -20,7 +21,7 @@ WORKDIR /app
 # Install Python dependencies
 RUN uv sync --frozen --no-cache
 
-ARG MODEL_NAME=""
+ARG MODEL_NAME="vidore/colqwen2-v1.0"
 ARG TOKENIZER_NAME=""
 ARG BASE_PATH="/runpod-volume"
 ARG QUANTIZATION=""
@@ -39,13 +40,10 @@ ENV MODEL_NAME="vidore/colqwen2-v1.0" \
     HF_HOME="${BASE_PATH}/huggingface-cache/hub" \
     HF_HUB_ENABLE_HF_TRANSFER=1 
 
+ENV PYTHONPATH="/:/vllm-workspace"
 
 # Handle optional HF_TOKEN and download model
-RUN --mount=type=secret,id=HF_TOKEN,required=false \
-    if [ -f /run/secrets/HF_TOKEN ]; then \
-        HF_TOKEN=$(cat /run/secrets/HF_TOKEN); \
-    fi && \
-    python3 /src/download_model.py "$MODEL_NAME" "$HF_TOKEN"
+RUN python3 src/download_model.py "$MODEL_NAME"
 
 # Start the application
 CMD ["python3", "-u", "src/main.py"]
