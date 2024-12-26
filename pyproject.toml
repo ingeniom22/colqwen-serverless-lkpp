@@ -6,5 +6,6 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "byaldi>=0.0.7",
+    "huggingface-hub>=0.27.0",
     "runpod>=1.7.7",
 ]
