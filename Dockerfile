@@ -25,8 +25,8 @@ WORKDIR /app
 RUN uv sync --frozen --no-cache
 
 RUN python3 -c "\
-    from byaldi import RAGMultiModalModel; \
-    RAGMultiModalModel.from_index('../byaldi/lkpp-multimodal')"
+from byaldi import RAGMultiModalModel; \
+RAGMultiModalModel.from_index('../byaldi/lkpp-multimodal')"
 
 # Start the application
 CMD ["uv", "run", "src/main.py"]
