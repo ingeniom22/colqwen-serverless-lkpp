@@ -1,8 +1,8 @@
 import runpod
-from byaldi import RAGMultiModalModel
+from setup import RAG
 
 
-RAG = RAGMultiModalModel.from_index("../byaldi/lkpp-multimodal")
+# RAG = RAGMultiModalModel.from_index("../byaldi/lkpp-multimodal")
 
 def handler(job):
     job_input = job["input"]
