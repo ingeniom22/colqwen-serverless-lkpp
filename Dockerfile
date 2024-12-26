@@ -20,6 +20,13 @@ WORKDIR /app
 # Install Python dependencies
 RUN uv sync --frozen --no-cache
 
+ARG MODEL_NAME=""
+ARG TOKENIZER_NAME=""
+ARG BASE_PATH="/runpod-volume"
+ARG QUANTIZATION=""
+ARG MODEL_REVISION=""
+ARG TOKENIZER_REVISION=""
+
 # Environment variables
 ENV MODEL_NAME="vidore/colqwen2-v1.0" \
     MODEL_REVISION=$MODEL_REVISION \
