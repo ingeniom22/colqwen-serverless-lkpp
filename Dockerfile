@@ -10,7 +10,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 
-RUN ldconfig /usr/local/cuda-12.1/compat/
+# RUN ldconfig /usr/local/cuda-12.1/compat/
 
 # Copy binaries
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
@@ -24,7 +24,7 @@ WORKDIR /app
 # Install Python dependencies
 RUN uv sync --frozen --no-cache
 
-RUN uv run src/setup.py
+# RUN uv run src/setup.py
 
 # Start the application
 CMD ["uv", "run", "src/main.py"]
