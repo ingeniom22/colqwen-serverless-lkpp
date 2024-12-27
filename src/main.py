@@ -3,12 +3,12 @@ import runpod
 import srsly
 from byaldi import RAGMultiModalModel
 
-index_config = srsly.read_gzip_json("..byaldi/lkpp-multimodal/index_config.json.gz")
+index_config = srsly.read_gzip_json("/app/byaldi/lkpp-multimodal/index_config.json.gz")
 index_config["model_name"] = "/tmp/model"
 
-srsly.write_gzip_json("..byaldi/lkpp-multimodal/index_config.json.gz", index_config)
+srsly.write_gzip_json("/app/byaldi/lkpp-multimodal/index_config.json.gz", index_config)
 
-RAG = RAGMultiModalModel.from_index("../byaldi/lkpp-multimodal")
+RAG = RAGMultiModalModel.from_index("/app/byaldi/lkpp-multimodal", index_root="")
 
 
 def handler(job):
