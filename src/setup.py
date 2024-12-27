@@ -1,3 +1,3 @@
-from byaldi import RAGMultiModalModel
+from huggingface_hub import snapshot_download
 
-RAG = RAGMultiModalModel.from_index("/app/byaldi/lkpp-multimodal", index_root="")
+snapshot_download(repo_id="vidore/colqwen2-v1.0")
