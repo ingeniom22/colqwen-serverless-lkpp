@@ -1,8 +1,15 @@
 import runpod
-from setup import RAG
 
+import srsly
+from byaldi import RAGMultiModalModel
 
-# RAG = RAGMultiModalModel.from_index("../byaldi/lkpp-multimodal")
+index_config = srsly.read_gzip_json("..byaldi/lkpp-multimodal/index_config.json.gz")
+index_config["model_name"] = "/tmp/model"
+
+srsly.write_gzip_json("..byaldi/lkpp-multimodal/index_config.json.gz", index_config)
+
+RAG = RAGMultiModalModel.from_index("../byaldi/lkpp-multimodal")
+
 
 def handler(job):
     job_input = job["input"]
