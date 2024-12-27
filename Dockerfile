@@ -29,7 +29,7 @@ WORKDIR /app
 # Install Python dependencies
 RUN uv sync --frozen --no-cache
 
-RUN uv run src/setup.py
+# RUN uv run src/setup.py
 
 # Start the application
 CMD ["uv", "run", "src/main.py"]

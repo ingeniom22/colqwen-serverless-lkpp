@@ -4,7 +4,7 @@ import srsly
 from byaldi import RAGMultiModalModel
 
 index_config = srsly.read_gzip_json("/app/byaldi/lkpp-multimodal/index_config.json.gz")
-index_config["model_name"] = "/tmp/colqwen2" 
+index_config["model_name"] = "/tmp/colqwen2"
 srsly.write_gzip_json("/app/byaldi/lkpp-multimodal/index_config.json.gz", index_config)
 
 
@@ -17,7 +17,17 @@ def handler(job):
 
     results = RAG.search(query=query, k=5)
 
-    return results
+    response = [
+        {
+            "doc_id": r.doc_id,
+            "page_num": r.page_num,
+            "base64": r.base64,
+            "score": r.score,
+        }
+        for r in results
+    ]
+
+    return response
 
 
 runpod.serverless.start({"handler": handler})
