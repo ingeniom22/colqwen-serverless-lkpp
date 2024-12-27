@@ -12,7 +12,7 @@ RUN apt-get update && \
 
 
 
-RUN git clone https://huggingface.co/vidore/colqwen2-v1.0-merged /tmp/model
+RUN git clone https://huggingface.co/vidore/colqwen2-v1.0-merged /tmp/colqwen2
 
 # RUN ldconfig /usr/local/cuda-12.1/compat/
 
